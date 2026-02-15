@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admission Form</title>
+</head>
+<body>
+
+<h1>Fillup the Form</h1>
+
+<form> 
+<fieldset>
+<table> 
+
+  <legend>General Information:</legend>
+<tr> 
+<td> First Name: </td> 
+<td> <input type="text" required maxlength="25"> </td> 
+</tr> 
+
+<tr> 
+<td> Last Name:</td> 
+<td><input type="text" required maxlength="25" > </td> 
+</tr> 
+
+<tr> 
+<td> Email: </td> 
+<td> <input type="email" required> </td> 
+</tr>
+
+<tr> 
+<td> Age:</td> 
+<td> <input type="number" required></td> 
+</tr> 
+
+<tr> 
+<td> Gender:</td> 
+<td> 
+<input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female">Female
+<input type="radio" name="gender" value="Others">Others
+</td> 
+</tr> 
+
+<tr> 
+<td> Date of Birth: </td> 
+<td> <input type="date"> </td> 
+</tr> 
+
+<tr> 
+<td> Interest:</td> 
+<td>
+<input type="checkbox">Cricket<br>
+<input type="checkbox">Football<br>
+<input type="checkbox">Indoor Sports<br>
+<input type="checkbox">Reading Books<br>
+
+</td> 
+</tr>
+</table>
+ </fieldset>
+ 
+<fieldset>
+<table> 
+
+  <legend>Accademics and skills:</legend>
+
+<tr> 
+<td> Skills:</td> 
+<td>
+<input type="checkbox">Python<br>
+<input type="checkbox">Problem Solving<br>
+<input type="checkbox">Embeded System<br>
+</td> 
+</tr>
+
+<tr>
+<td>Department: </td>
+<td>
+<select name="cars" id="cars">
+    <option value="CSE">CSE</option>
+    <option value="EEE">EEE</option>
+    <option value="IPE">IPE</option>
+    <option value="Architecture">Arch</option>
+  </select>
+</td>
+</tr>
+<tr><td>Upload Resume</td>
+<td><input type="file" id="myFile" name="filename"></td></tr> 
+</table>
+ </fieldset>
+ <table><tr><td><input type="submit"></td></tr></table>
+</form> 
+
+</body>
+</html>
