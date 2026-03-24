@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Text Analyzer</title>
+    <style>
+      #inputText {
+        margin-bottom: 80px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Text Analyzer</h1>
+
+    <label>Enter your text:</label>
+    <br /><br />
+    <textarea
+      id="inputText"
+      rows="8"
+      cols="60"
+      placeholder="type something"
+    ></textarea>
+    <br />
+
+    <button onclick="analyzeText()">Analyze Text</button>
+    <button onclick="clearAll()">Clear</button>
+
+    <br /><br />
+
+    <div id="results"></div>
+
+    <script>
+      function analyzeText() {
+        var text = document.getElementById("inputText").value;
+        var resultsDiv = document.getElementById("results");
+
+        if (text.trim() === "") {
+          alert("Please enter some text.");
+
+          return;
+        }
+
+        var totalChars = text.length;
+
+        var words = text.trim().split(/\s+/);
+        var totalWords = words.length;
+
+        var reversedText = text.split("").reverse().join("");
+
+        resultsDiv.innerHTML =
+          "<h2>Results</h2>" +
+          "<p><b>Total Characters:</b> " +
+          totalChars +
+          "</p>" +
+          "<p><b>Total Words:</b> " +
+          totalWords +
+          "</p>" +
+          "<p><b>Reversed Text:</b></p>" +
+          "<p>" +
+          reversedText +
+          "</p>";
+      }
+
+      function clearAll() {
+        document.getElementById("inputText").value = "";
+        document.getElementById("results").innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
