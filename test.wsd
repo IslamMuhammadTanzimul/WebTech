@@ -1,0 +1,92 @@
+@startuml
+!theme plain
+left to right direction
+
+' ===== Layout Optimization =====
+skinparam linetype ortho
+skinparam padding 3
+skinparam margin 8
+skinparam nodesep 30
+skinparam ranksep 30
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+
+' ===== Styling =====
+skinparam ActivityBackgroundColor #FFFFFF
+skinparam ActivityBorderColor #455A64
+skinparam ActivityBorderThickness 1.5
+skinparam ArrowColor #455A64
+skinparam ArrowThickness 1.5
+
+skinparam ActivityDiamondBackgroundColor #FFF9C4
+skinparam ActivityDiamondBorderColor #F9A825
+
+skinparam SwimlaneBorderColor #455A64
+skinparam SwimlaneBorderThickness 1.5
+skinparam SwimlaneTitleFontStyle bold
+
+title <b>LunchLoop v2.0 — Process Flow</b>
+subtitle Day 1 (4 PM Lock) → Day 2 Delivery
+
+' ===== Flow =====
+|Employee|
+start
+:E1 Submit Order\n(Before 4 PM);
+
+|System|
+:S1 Save Order;
+:S2 Lock Orders (4 PM);
+:S3 Send to Vendor;
+
+|Vendor|
+:V1 Check Ingredients;
+
+if (Available?) then (No)
+  :V2 Stockout;
+
+  |System|
+  :S4 Notify + Suggest;
+
+  |Employee|
+  if (Accept?) then (Yes)
+    :E2 Confirm;
+    |Vendor|
+  else (No)
+    |System|
+    :S5 Refund;
+    stop
+  endif
+endif
+
+|Vendor|
+:V3 Prepare + Label;
+
+|Delivery|
+:D1 Pickup (Morning);
+:D2 Count Bags;
+
+if (Match?) then (No)
+  :D3 Fix Issue;
+  --> D2
+endif
+
+:D4 Deliver;
+:D5 Confirm Drop;
+
+|System|
+:S6 Notify Employees;
+
+|Employee|
+:E3 Get Alert;
+:E4 Scan QR;
+
+if (Correct?) then (Yes)
+  :E5 Collect Meal ✅;
+  stop
+else (No)
+  |System|
+  :S7 Refund + Log;
+  stop
+endif
+
+@enduml
